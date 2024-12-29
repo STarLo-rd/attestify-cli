@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "lifecycle": "node src/scripts/runCommitmentLifecycle.js"
   },
   "dependencies": {
     "yargs": "^17.7.2",

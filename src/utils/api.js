@@ -1,27 +1,33 @@
-import axios from 'axios';
-import chalk from 'chalk';
-import { store, BASE_URL } from '../config/store.js';
+import axios from "axios";
+import chalk from "chalk";
+import { store, BASE_URL } from "../config/store.js";
 
-export async function executeAuthenticatedRequest(endpoint, payload, successMessage) {
+export async function executeAuthenticatedRequest(
+  endpoint,
+  payload,
+  successMessage
+) {
   try {
-    const token = store.get('token');
+    const token = store.get("token");
     if (!token) {
-      throw new Error('Not authenticated. Please login first.');
+      throw new Error("Not authenticated. Please login first.");
     }
 
-    const response = await axios.post(
-      `${BASE_URL}/${endpoint}`,
-      payload,
-      {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      }
-    );
-    
+    const response = await axios.post(`${BASE_URL}/${endpoint}`, payload, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
     console.log(chalk.green(successMessage));
-    console.log(chalk.blue('Response:'), response.data);
+    // Print full response data for parsing
+    console.log(JSON.stringify(response.data));
+    return response.data;
   } catch (error) {
-    console.error(chalk.red(`Operation failed:`), error.response?.data || error.message);
+    console.error(
+      chalk.red(`Operation failed:`),
+      error.response?.data || error.message
+    );
+    throw error;
   }
 }

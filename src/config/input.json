@@ -1,0 +1,19 @@
+{
+    "committee": {
+      "username": "alice",
+      "email": "alice@example.com",
+      "password": "password123",
+      "mnemonic": "kit novel carpet brief draft install mammal nation link fabric crouch boy"
+    },
+    "committer": {
+      "username": "bob",
+      "email": "bob@example.com",
+      "password": "password123",
+      "mnemonic": "fitness spider can adjust pencil system wide margin regular pencil prize eager"
+    },
+    "commitment": {
+      "assetName": "Gold",
+      "quantity": 100,
+      "unit": "grams"
+    }
+  }
